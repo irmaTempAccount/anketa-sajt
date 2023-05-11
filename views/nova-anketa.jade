@@ -1,0 +1,111 @@
+extends navigacija 
+
+block content
+    form(class="nova-anketa" onsubmit="spremiAnketu(event)")
+        header
+            input(type="text" placeholder="Ime ankete" id="ime-ankete")
+        div(id="dodata-pitanja")
+        div(class="novo-pitanje")
+            input(type="text" placeholder="Pitanje" id="pitanje")
+            div
+                div
+                    p Opcije:
+                    div(id="opcije")
+                div(class="opcije-input")
+                    input(type="text" placeholder="Opcija" id="opcija")
+                    button(type="button" onclick="dodajOpciju()") +
+            button(type="button" onclick="dodajPitanje()") +
+        button(type="submit" class="spremi-dugme") Spremi
+    script.
+        var pitanjaDiv = document.querySelector('#dodata-pitanja')
+
+        var opcije = []
+
+        var pitanja = []
+
+        var opcijeDiv = document.querySelector('#opcije')
+
+        var dodajOpciju = () => {
+            var novaOpcija = document.querySelector("#opcija")
+            if (novaOpcija.value === '') {
+                return;
+            }
+            opcije.push(novaOpcija.value)
+            prikaziOpcije()
+            novaOpcija.value = ''
+        }
+
+        var prikaziOpcije = () => {
+            opcijeDiv.innerHTML = ""
+            opcije.forEach(opcija =>{
+                var noviParagraf = document.createElement("p");
+                noviParagraf.classList.add("nova-opcija")
+                var text = document.createTextNode(opcija);
+                noviParagraf.appendChild(text);
+                opcijeDiv.appendChild(noviParagraf);
+            })
+        }
+
+        var dodajPitanje = () => {
+            var pitanje = document.querySelector("#pitanje")
+            if (pitanje.value === '' || opcije.length === 0) {
+                return;
+            }
+            pitanja.push({pitanje: pitanje.value, opcije: opcije})
+            pitanje.value = ''
+            opcije = [];
+            prikaziPitanja()
+            prikaziOpcije()
+
+        }
+
+        var prikaziPitanja = () => {
+            pitanjaDiv.innerHTML = ""
+            pitanja.forEach(pitanje =>{
+                var div = document.createElement('div');
+                div.classList.add("dodata-pitanja")
+                var noviNaslov = document.createElement("h1");
+                var tekstNaslova = document.createTextNode(pitanje.pitanje);
+                noviNaslov.appendChild(tekstNaslova);
+                div.appendChild(noviNaslov);
+
+                var opcije = document.createElement('div');
+                opcije.classList.add("opcije")
+
+                pitanje.opcije.forEach(opcija => {
+                    var noviParagraf = document.createElement("p");
+                    noviParagraf.classList.add("nova-opcija")
+                    noviParagraf.innerHTML = opcija
+                    opcije.appendChild(noviParagraf)
+                })
+
+                div.appendChild(opcije)
+                pitanjaDiv.appendChild(div)
+            })
+        }
+
+        var spremiAnketu = async (event) => {
+            event.preventDefault();
+            var ime = document.querySelector("#ime-ankete")
+
+            if (!ime || pitanja.length === 0) {
+                return;
+            }
+
+            console.log({ime: ime.value, pitanja})
+
+            var res = await fetch('/ankete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ime: ime.value,
+                    pitanja: pitanja
+                })
+            })
+
+            var anketa = await res.json()
+
+            window.location.href = '/ankete/' + anketa._id
+        }

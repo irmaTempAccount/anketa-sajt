@@ -1,0 +1,13 @@
+extends navigacija
+
+block content
+  div(class="naslovna-strana")
+    button(class="zapocni-dugme")
+      h1 Zapocni
+    script.
+      var getStartedButton = document.querySelector('.zapocni-dugme');
+
+      getStartedButton.addEventListener('click', function (event) {
+        window.location.href = '/nova'
+      });
+

@@ -1,0 +1,17 @@
+extends navigacija
+
+block content
+    form(class="anketa" action="#" method="POST")
+        div(class="anketa-traka")
+            h1= anketa.ime
+            a(href="/ankete/" + anketa._id + "/rezultati") Rezultati 
+        div(class="anketa-pitanja")
+            each pitanje in anketa.pitanja
+                div(class="anketa-pitanje")
+                    strong= pitanje.pitanje
+                    div(class="anketa-opcije")
+                        each opcija in pitanje.opcije
+                            div(class="opcija")
+                                input(type="radio", name=pitanje.pitanje, id=opcija, value=opcija)
+                                label(for=opcija)=opcija
+            button(type="submit") Posalji

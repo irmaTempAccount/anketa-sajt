@@ -1,0 +1,12 @@
+extends navigacija
+
+block content
+  div(class="rezultati")
+    h1 Rezultati ankete #{anketa.ime}
+    each pitanje in anketa.pitanja
+        h2= pitanje.pitanje
+        each opcija in pitanje.opcije
+            - let broj = (brojalica[pitanje.pitanje] || {})[opcija] || 0
+            p
+                span #{opcija}:
+                span= broj

@@ -1,0 +1,275 @@
+body {
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  height: calc(100vh - 100px);
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  justify-self: center;
+  align-self: center;
+}
+
+.navigacijska-traka {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #343541;
+  color: white;
+  position: sticky;
+  height: 100px;
+}
+
+.navigacija-linkovi > button {
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.ankete {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 85%;
+  text-align: center;
+}
+
+.ankete > a {
+  color: white;
+  width: 200px;
+  background-color: #1d1e24;
+  border-radius: 5px;
+  transform: scale(1);
+  transition: transform 200ms;
+}
+
+.ankete > a:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 200ms;
+}
+
+.ankete > button,
+.ankete > button > a {
+  transform: scale(1);
+  transition: transform 200ms;
+  color: black;
+  font-size: 50px;
+}
+
+.ankete > button:hover {
+  transform: scale(1.2);
+  transition: transform 200ms;
+}
+
+.zapocni-dugme {
+  background-color: #1d1e24;
+  border-radius: 5px;
+  padding: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: fit-content;
+  transition: background-color 200ms;
+}
+
+.nova-anketa {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid black;
+  width: 50%;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.531);
+}
+
+.nova-anketa > button {
+  color: black;
+  width: fit-content;
+  font-size: 20px;
+}
+
+.nova-anketa > header {
+  width: 100%;
+  background-color: #1d1e24;
+}
+
+.novo-pitanje > input {
+  font-size: 20px;
+  padding: 1rem;
+}
+
+.novo-pitanje > input,
+.nova-anketa > header > input {
+  border: none;
+}
+
+.nova-anketa > header > input {
+  padding: 1rem;
+  color: white;
+  font-size: 2em;
+  background-color: #1d1e24;
+}
+
+.nova-anketa > .spremi-dugme {
+  background-color: #343541;
+  color: white;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+#dodata-pitanja {
+  width: 90%;
+}
+
+.novo-pitanje,
+.dodata-pitanja {
+  border: 1px solid black;
+  width: 90%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dodata-pitanja > h1,
+.dodata-pitanja > div {
+  margin: 1rem;
+}
+
+.dodata-pitanja {
+  background-color: #1d1e24;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.novo-pitanje > div {
+  padding: 1rem;
+}
+
+.novo-pitanje > button {
+  color: black;
+  font-size: 30px;
+  width: fit-content;
+  height: 100%;
+  position: absolute;
+  background-color: #343541;
+  color: white;
+  right: 0;
+}
+
+.opcije-input {
+  background-color: #343541;
+  color: white;
+  width: fit-content;
+}
+
+#opcije,
+.opcije {
+  display: flex;
+  flex-direction: row;
+}
+
+.nova-opcija {
+  background-color: gray;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+  margin-right: 10px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.anketa {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.anketa-pitanje {
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+  width: 100%;
+  color: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  color: black;
+}
+
+.anketa-opcije {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+}
+
+.opcija {
+  margin-top: 2rem;
+  margin-left: 40px;
+}
+
+.anketa-pitanja {
+  width: 100%;
+}
+
+.anketa-pitanja > button {
+  background-color: #1d1e24;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.anketa-traka {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline
+}
+
+.anketa-traka > a {
+  color: blue;
+  margin-left: 1rem;
+}
+
+.anketa-traka > a:hover {
+  text-decoration: underline;
+}
+
+.rezultati {
+  display: flex;
+  flex-direction: column;
+}

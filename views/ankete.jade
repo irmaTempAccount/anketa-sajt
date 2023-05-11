@@ -1,0 +1,9 @@
+extends navigacija
+
+block content
+  div(class="ankete")
+    each anketa in ankete
+      a(href=`/ankete/${anketa._id}`)
+        h3= anketa.ime 
+    button
+      a(href="/nova") +
