@@ -5,7 +5,6 @@ var router = express.Router();
 
 router.get('/', async function (req, res, next) {
   var ankete = await Anketa.find({});
-  console.log(ankete);
   res.render('ankete', { ankete });
 });
 
@@ -21,7 +20,6 @@ router.get('/:id', async function (req, res, next) {
 
 router.post('/', async function (req, res, next) {
   if (!req.body.ime || req.body.pitanja.length === 0) {
-    console.log('here');
     return res.sendStatus(400);
   }
 
@@ -37,7 +35,7 @@ router.post('/:id', async function (req, res, next) {
   var anketa = await Anketa.findById(req.params.id);
 
   await Rezultat.create({ anketa: anketa._id, rezultati: req.body });
-  res.sendStatus(201);
+  res.redirect(anketa._id + '/rezultati')
 });
 
 router.get('/:id/rezultati', async function (req, res, next) {
